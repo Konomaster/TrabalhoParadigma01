@@ -3,11 +3,12 @@
     "configurations": [
         {
             "name": "app",
+            "args": [ "test/PlanilhaGastos.xlsx", "Pagina1" ],
             "type": "python",
             "request": "launch",
             "module": "app",
             "justMyCode": true,
-            "cwd": "${workspaceFolder}/test"
+            "cwd": "${workspaceFolder}",
         }
     ]
 }

@@ -1,13 +1,20 @@
-import pandas as pd
-from pyswip import Prolog
+from app import make_engine
+import argparse
+import pandas
 
 
-def main():
-    p = Prolog()
+p = make_engine()
 
-    # usar com index_col=0 tira a primeira coluna
-    dataFrame = pd.read_excel('PlanilhaGastos.xlsx', sheet_name='Pagina1')
+
+# def get_file_data(file_path: str) -> list:
+#     pass
+
+
+def main(args):
+
+    dataFrame = pandas.read_excel(args.input, sheet_name=args.sheet)
     print(dataFrame.head())
+    
     excel_rows = []
     lista_gastos = []
     for i in list(range(0, len(dataFrame.index))):
@@ -22,15 +29,21 @@ def main():
             else:
                 fato += "',"
         print(fato)
-        p.assertz(fato)
+        p.asserta(fato)
         excel_rows.append(d)
 
-    p.assertz('compramos(Item) :- gasto(_,Item,_,_,_,_,_)')
+    # p.assertz('compramos(Item) :- gasto(_,Item,_,_,_,_,_)')
     #p.assertz('qtdComprada(Item,Qtd) :- gasto(_,Item,_,_,_,_,_)')
     # print(list(p.query('gasto(X,Y,Z,A,B,C,D)')))
-    print(bool(list(p.query("compramos('Cimento Campeão CPII')"))))
-    pass
+    # print(bool(list(p.query("compramos('Cimento Campeão CPII')"))))
+
+    for a in p.query("compramos('Cimento Campeão CPII')"):
+        print(a)
 
 
-if __name__ == '__main__':
-    main()
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Trabalho paradigmas")
+    parser.add_argument("input", metavar="i", type=str, help="Arquivo de entrada")
+    parser.add_argument("sheet", metavar="s", type=str, help="Página do arquivo de entrada")
+
+    main(parser.parse_args())
