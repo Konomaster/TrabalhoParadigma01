@@ -38,9 +38,13 @@ def parse_file_data(file_path: str, type: str = "csv", sheet: str = None) -> Non
 
 
 def menu() -> int:
-    print("###################################")
-    print("1 - Consultar item")
-    print("2 - Consultar quantidade comprada de item")
+    print("###### Consultar ##################")
+    print("1 - Produto")
+    print("2 - Quantidade comprada de produto")
+    print("3 - Valor total de produto")
+    print("4 - Comprados na data")
+    print("5 - Compras na loja")
+    print("6 - Produto mais comprado")
     print("exit - Encerrar")
     print("###################################")
 
