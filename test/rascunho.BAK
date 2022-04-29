@@ -6,7 +6,7 @@ gasto('01-09-2021', piso, 'Loja da zica', 70.0, caixa, 28.0, 560.0).
 
 compramos(Item) :- gasto(_,Item,_,_,_,_,_).
 
-qtdTotal(Item,Total) :- findall(Unidades, (gasto(_,Item,_,Unidades,_,_,_)),ListaTotal),sum_list(ListaTotal,Total),write(ListaTotal).
+qtdTotal(Item,Total) :- findall(Unidades, (gasto(_,Item,_,Unidades,_,_,_)),ListaTotal),sum_list(ListaTotal,Total).
 
 total_compras_loja(Loja,Total) :- findall(Compra, (gasto(_,_,Loja,_,_,_,Compra)),ListaCompras),sum_list(ListaCompras,Total).
 

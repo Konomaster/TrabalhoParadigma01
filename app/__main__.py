@@ -27,11 +27,15 @@ def parse_file_data(file_path: str, type: str = "csv", sheet: str = None) -> Non
 
         fato = 'gasto('
         for j in range(0, len(d)):
-            fato += "'"+str(d[j])
-            if j == len(d)-1:
-                fato += "')"
+            if j==3 or j==5 or j==6:
+                fato += str(d[j])
             else:
-                fato += "',"
+                fato += "'" + str(d[j]) + "'"
+
+            if j!=6:
+                fato+=","
+            else:
+                fato+=")"
         print(fato)
         prolog.asserta(fato)
         excel_rows.append(d)
