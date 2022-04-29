@@ -72,17 +72,6 @@ def op_quantidade_item() -> None:
     for i in query:
         print(i)
 
-def run_question(question: str) -> bool:
-    result = prolog.query(question)
-    if result == {}:
-        return True
-    
-    return False
-
-
-def run_query(query: str) -> dict:
-    return prolog.query(query)
-
 
 def main(args):
     parse_file_data(args.input, args.type, args.sheet)
@@ -96,10 +85,6 @@ def main(args):
             op_consulta_item()
         elif cmd == "2":
             op_quantidade_item()
-
-    # p.assertz('compramos(Item) :- gasto(_,Item,_,_,_,_,_)')
-    #p.assertz('qtdComprada(Item,Qtd) :- gasto(_,Item,_,_,_,_,_)')
-    # print(list(p.query('gasto(X,Y,Z,A,B,C,D)')))
 
 
 parser = argparse.ArgumentParser(description="Trabalho paradigmas")
