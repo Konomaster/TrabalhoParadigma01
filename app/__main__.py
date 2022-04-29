@@ -68,9 +68,16 @@ def op_quantidade_item() -> None:
     item = input("Nome do item> ")
 
     query = prolog.query("quantidade_total('%s', Qtd)" % item)
-    # print(query["Qtd"])
     for i in query:
-        print(i)
+        print("Quantidade comprada = ", i["Qtd"])
+
+
+def op_valor_total_item() -> None:
+    item = input("Nome do item> ")
+
+    query = prolog.query("valor_total('%s', Total)" % item)
+    for i in query:
+        print("Total do item = ", i["Total"])
 
 
 def main(args):
@@ -85,6 +92,8 @@ def main(args):
             op_consulta_item()
         elif cmd == "2":
             op_quantidade_item()
+        elif cmd == "3":
+            op_valor_total_item()
 
 
 parser = argparse.ArgumentParser(description="Trabalho paradigmas")
