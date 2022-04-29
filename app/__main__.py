@@ -83,7 +83,6 @@ def op_comprados_na_data() -> None:
     data = input("Data da compra (formato dd-MM-AAAA)> ")
 
     query = prolog.query("gasto('%s',Item,_,_,_,_,_)" % data)
-
     for i in query:
         print(i['Item'])
 

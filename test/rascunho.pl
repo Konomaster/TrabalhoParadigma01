@@ -1,8 +1,9 @@
-gasto('01-09-2021', cimento, 'Loja do Zé', 20.0, saco, 28.0, 560.0).
-gasto('01-09-2021', cimento, 'Loja do Zé', 20.0, saco, 28.0, 560.0).
-gasto('01-09-2021', piso, 'Loja da zica', 30.0, caixa, 28.0, 560.0).
-gasto('01-09-2021', ferramenta, 'Loja do tonho', 2.0, unidade, 28.0, 560.0).
-gasto('01-09-2021', piso, 'Loja da zica', 70.0, caixa, 28.0, 560.0).
+gasto('01-09-2021','Cimento Campeão CPII','Loja do Ze',20.0,'saco',28.0,560.0).
+gasto('01-09-2021','Lentilha','Loja da Maria',20.0,'saco',28.0,560.0).
+gasto('01-10-2021','Cimento Campeão CPII','Loja do Ze',30.0,'saco',28.0,840.0).
+gasto('01-09-2021','Cimento Campeão CPII','Lojas Americanas',15.0,'saco',28.0,420.0).
+gasto('01-02-2021','Agrofilito','Loja Da Maria',10.0,'saco',28.0,280.0).
+gasto('01-03-2021','Lentilha','Lojas Americanas',50.0,'saco',28.0,1400.0).
 
 compramos(Item) :- gasto(_,Item,_,_,_,_,_).
 
