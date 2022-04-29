@@ -3,7 +3,9 @@
     "configurations": [
         {
             "name": "app",
-            "args": [ "test/PlanilhaGastos.xlsx", "Pagina1" ],
+            // "args": [ "test/PlanilhaGastos.xlsx", "Pagina1" ],
+            // "args": [ "test/PlanilhaGastos.xlsx", "excel", "Pagina1" ],
+            "args": [ "test/teste1.csv", "csv", "-" ],
             "type": "python",
             "request": "launch",
             "module": "app",
