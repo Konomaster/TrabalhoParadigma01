@@ -37,7 +37,7 @@ def parse_file_data(file_path: str, type: str = "csv", sheet: str = None) -> Non
         excel_rows.append(d)
 
 
-def menu() -> int:
+def menu():
     print("###### Consultar ##################")
     print("1 - Produto")
     print("2 - Quantidade comprada de produto")
