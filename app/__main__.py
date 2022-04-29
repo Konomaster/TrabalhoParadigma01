@@ -79,6 +79,20 @@ def op_valor_total_item() -> None:
     for i in query:
         print("Total do item = ", i["Total"])
 
+def op_comprados_na_data() -> None:
+    data = input("Data da compra (formato dd-MM-AAAA)> ")
+
+    query = prolog.query("gasto('%s',Item,_,_,_,_,_)" % data)
+
+    for i in query:
+        print(i['Item'])
+
+def op_compras_na_loja() -> None:
+    loja=input("Digite o nome da loja> ")
+
+    query=list(prolog.query("total_compras_loja('%s',Total)" % loja))
+    print("Total comprado na ",loja,": R$ ",query[0]['Total'])
+    pass
 
 def main(args):
     parse_file_data(args.input, args.type, args.sheet)
@@ -92,8 +106,21 @@ def main(args):
             op_consulta_item()
         elif cmd == "2":
             op_quantidade_item()
+
         elif cmd == "3":
             op_valor_total_item()
+
+        elif cmd=="4":
+            op_comprados_na_data()
+
+        elif cmd=="5":
+            op_compras_na_loja()
+
+
+    # p.assertz('compramos(Item) :- gasto(_,Item,_,_,_,_,_)')
+    #p.assertz('qtdComprada(Item,Qtd) :- gasto(_,Item,_,_,_,_,_)')
+    # print(list(p.query('gasto(X,Y,Z,A,B,C,D)')))
+
 
 
 parser = argparse.ArgumentParser(description="Trabalho paradigmas")
