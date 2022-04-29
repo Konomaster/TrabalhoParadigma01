@@ -39,10 +39,30 @@ def parse_file_data(file_path: str, type: str = "csv", sheet: str = None) -> Non
 
 def menu() -> int:
     print("###################################")
-    print("1 - Inserir novo gasto")
-    print("2 - Consultar item")
+    print("1 - Consultar item")
+    print("2 - Consultar quantidade comprada de item")
+    print("exit - Encerrar")
     print("###################################")
 
+
+def op_consulta_item() -> None:
+    item = input("Nome do item> ")
+
+    if bool(list(prolog.query("comprado('%s')" % item))):
+        print("O item foi comprado")
+    else:
+        print("O item não foi comprado")
+    
+    # for a in prolog.query("compramos('Cimento Campeão CPII')"):
+    #     print(a)
+
+def op_quantidade_item() -> None:
+    item = input("Nome do item> ")
+
+    query = prolog.query("quantidade_total('%s', Qtd)" % item)
+    # print(query["Qtd"])
+    for i in query:
+        print(i)
 
 def run_question(question: str) -> bool:
     result = prolog.query(question)
@@ -59,14 +79,19 @@ def run_query(query: str) -> dict:
 def main(args):
     parse_file_data(args.input, args.type, args.sheet)
 
+    cmd = None
+    while cmd != "exit":
+        menu()
+        cmd = input("> ")
+
+        if cmd == "1":
+            op_consulta_item()
+        elif cmd == "2":
+            op_quantidade_item()
 
     # p.assertz('compramos(Item) :- gasto(_,Item,_,_,_,_,_)')
     #p.assertz('qtdComprada(Item,Qtd) :- gasto(_,Item,_,_,_,_,_)')
     # print(list(p.query('gasto(X,Y,Z,A,B,C,D)')))
-    # print(bool(list(p.query("compramos('Cimento Campeão CPII')"))))
-
-    # for a in prolog.query("compramos('Cimento Campeão CPII')"):
-    #     print(a)
 
 
 parser = argparse.ArgumentParser(description="Trabalho paradigmas")
