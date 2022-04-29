@@ -97,7 +97,7 @@ def op_compras_na_loja() -> None:
 def op_item_mais_comprado() -> None:
     query = prolog.query("mais_comprado(Item)")
     for i in query:
-        print("Item = ", i["Item"])
+        print("Item mais comprado = ", i["Item"])
 
 
 def main(args):
@@ -112,17 +112,17 @@ def main(args):
             op_consulta_item()
         elif cmd == "2":
             op_quantidade_item()
-
         elif cmd == "3":
             op_valor_total_item()
+        elif cmd=="4":
+            op_comprados_na_data()
+        elif cmd=="5":
+            op_compras_na_loja()
         elif cmd == "6":
             op_item_mais_comprado()
 
-        elif cmd=="4":
-            op_comprados_na_data()
 
-        elif cmd=="5":
-            op_compras_na_loja()
+
 
 
     # p.assertz('compramos(Item) :- gasto(_,Item,_,_,_,_,_)')
