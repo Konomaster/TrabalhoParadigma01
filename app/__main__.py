@@ -80,6 +80,12 @@ def op_valor_total_item() -> None:
         print("Total do item = ", i["Total"])
 
 
+def op_item_mais_comprado() -> None:
+    query = prolog.query("mais_comprado(Item)")
+    for i in query:
+        print("Item = ", i["Item"])
+
+
 def main(args):
     parse_file_data(args.input, args.type, args.sheet)
 
@@ -94,6 +100,8 @@ def main(args):
             op_quantidade_item()
         elif cmd == "3":
             op_valor_total_item()
+        elif cmd == "6":
+            op_item_mais_comprado()
 
 
 parser = argparse.ArgumentParser(description="Trabalho paradigmas")
