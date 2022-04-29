@@ -94,6 +94,12 @@ def op_compras_na_loja() -> None:
     print("Total comprado na ",loja,": R$ ",query[0]['Total'])
     pass
 
+def op_item_mais_comprado() -> None:
+    query = prolog.query("mais_comprado(Item)")
+    for i in query:
+        print("Item = ", i["Item"])
+
+
 def main(args):
     parse_file_data(args.input, args.type, args.sheet)
 
@@ -109,6 +115,8 @@ def main(args):
 
         elif cmd == "3":
             op_valor_total_item()
+        elif cmd == "6":
+            op_item_mais_comprado()
 
         elif cmd=="4":
             op_comprados_na_data()
