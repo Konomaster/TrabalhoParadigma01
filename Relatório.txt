@@ -23,5 +23,3 @@ Instalar python 3.10 ou superior
 $ pip install poetry
 $ poetry install
 $ poetry run python -m app <arquivo entrada> <formato excel, csv> [<sheet excel>]
-
-#consertar a operacao 4 pra exibir so um de cada se tiver tempo

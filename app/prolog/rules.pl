@@ -44,6 +44,9 @@ valor_total(Item, Total) :-
     gasto(_, Item, _, _, _, Valor, _),
     Total is Unidades * Valor, !.
 
+comprados_em(Data, Result) :-
+    setof(Item, gasto(Data,Item,_,_,_,_,_), Result).
+
 total_compras_loja(Loja,Total) :-
     findall(Compra, gasto(_, _, Loja, _, _, _, Compra), ListaCompras),
     sum_list(ListaCompras, Total).

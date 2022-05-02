@@ -82,9 +82,9 @@ def op_valor_total_item() -> None:
 def op_comprados_na_data() -> None:
     data = input("Data da compra (formato dd-MM-AAAA)> ")
 
-    query = prolog.query("gasto('%s',Item,_,_,_,_,_)" % data)
+    query = prolog.query("comprados_em('%s',Items)" % data)
     for i in query:
-        print(i['Item'])
+        print(i['Items'][0])
 
 def op_compras_na_loja() -> None:
     loja=input("Digite o nome da loja> ")
@@ -119,15 +119,6 @@ def main(args):
             op_compras_na_loja()
         elif cmd == "6":
             op_item_mais_comprado()
-
-
-
-
-
-    # p.assertz('compramos(Item) :- gasto(_,Item,_,_,_,_,_)')
-    #p.assertz('qtdComprada(Item,Qtd) :- gasto(_,Item,_,_,_,_,_)')
-    # print(list(p.query('gasto(X,Y,Z,A,B,C,D)')))
-
 
 
 parser = argparse.ArgumentParser(description="Trabalho paradigmas")
