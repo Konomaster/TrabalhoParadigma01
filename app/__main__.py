@@ -124,5 +124,5 @@ def main(args):
 parser = argparse.ArgumentParser(description="Trabalho paradigmas")
 parser.add_argument("input", metavar="i", type=str, help="Arquivo de entrada")
 parser.add_argument("type", metavar="t", type=str, help="Tipo do arquivo de entrada (csv, excel)")
-parser.add_argument("sheet", metavar="s", type=str, help="Página do arquivo de entrada")
+parser.add_argument("--sheet", metavar="s", type=str, default="", help="Página do arquivo de entrada")
 main(parser.parse_args())

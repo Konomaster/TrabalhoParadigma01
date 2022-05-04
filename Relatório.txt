@@ -22,4 +22,4 @@ Como executar o projeto:
 Instalar python 3.10 ou superior
 $ pip install poetry
 $ poetry install
-$ poetry run python -m app <arquivo entrada> <formato excel, csv> [<sheet excel>]
+$ poetry run python -m app <arquivo entrada> <formato excel, csv> [--sheet <sheet excel>]
