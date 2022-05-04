@@ -1,8 +1,8 @@
-gasto('01-09-2021','Cimento Campeão CPII','Loja do Ze',20.0,'saco',28.0,560.0).
+gasto('01-09-2021','Cimento Campeão CPII','Loja do Ze',25.0,'saco',28.0,560.0).
 gasto('01-09-2021','Lentilha','Loja da Maria',20.0,'saco',28.0,560.0).
 gasto('01-10-2021','Cimento Campeão CPII','Loja do Ze',30.0,'saco',28.0,840.0).
 gasto('01-09-2021','Cimento Campeão CPII','Lojas Americanas',15.0,'saco',28.0,420.0).
-gasto('01-02-2021','Agrofilito','Loja Da Maria',10.0,'saco',28.0,280.0).
+gasto('01-02-2021','Agrofilito','Loja Da Maria',70.0,'saco',28.0,280.0).
 gasto('01-03-2021','Lentilha','Lojas Americanas',50.0,'saco',28.0,1400.0).
 
 compramos(Item) :- gasto(_,Item,_,_,_,_,_).
@@ -25,7 +25,7 @@ pegaProdutosSemRepetir(X) :- findall(Produto,gasto(_,Produto,_,_,_,_,_),ListaPro
 itera([],[]).
 itera([H|T],Result) :- itera(T,Result1), findall(QtdProduto,gasto(_,H,_,QtdProduto,_,_,_),ListaQtd),sum_list(ListaQtd,Total),Result=[Total|Result1].
 
-produtoMaisComprado(ProdutoMaisComprado) :- pegaProdutosSemRepetir(X),itera(X,Result),max_list(Result,_,Index),find_item(X,Index,ProdutoMaisComprado),write(ProdutoMaisComprado).
+%produtoMaisComprado(ProdutoMaisComprado) :- pegaProdutosSemRepetir(X),itera(X,Result),max_list(Result,_,Index),find_item(X,Index,ProdutoMaisComprado),write(ProdutoMaisComprado).
 
 tamanho([],0).
 tamanho([H|T],Result) :- H\=[],tamanho(T,Result1), Result is Result1+1.
@@ -46,3 +46,20 @@ max_list([X|Xs],OldMax,OldIndex,CurrentIndex, Max, Index):-
 
 find_item([H|_],0,Resultado) :- Resultado=H.
 find_item([_|T],Index,Resultado) :- Index>0,IndexR is Index -1 ,find_item(T,IndexR,Result1),Resultado=Result1.
+
+pegaProdsSemRepetir(X) :- findall(Produto,gasto(_,Produto,_,_,_,_,_),ListaProdutos),sort(ListaProdutos,X).
+
+fazLista([],[]).
+fazLista([H|T],Result) :- fazLista(T,Result1), findall(QtdProduto,gasto(_,H,_,QtdProduto,_,_,_),ListaQtd),sum_list(ListaQtd,Total),Result=[dados(H,Total)|Result1].
+
+descobreMax([],-1).
+descobreMax([H|T],Max):-descobreMax(T,OldMax),H=..[_,_,Qtd],((OldMax>Qtd,Max is OldMax);Max is Qtd).
+
+
+
+maisComprado(_,[],[]).
+maisComprado(Max,[H|T],LProdutos):-maisComprado(Max,T,Res1),H=..[_,Produto,Qtd],
+                                   ((Qtd=:=Max,LProdutos=[Produto|Res1]);LProdutos=Res1).
+                                   
+produtoMaisComprado(L):-pegaProdsSemRepetir(X),fazLista(X,Res),descobreMax(Res,Max),maisComprado(Max,Res,L),!.
+

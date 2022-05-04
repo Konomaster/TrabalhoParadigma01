@@ -9,7 +9,7 @@ python para um processo secundário o qual interepreta e gera os resultados prol
 
 O sistema organiza-se a partir da separação do código python e prolog em arquivos
 diferentes, mantendo a distinção de contextos. Pelo python o arquivo prolog e carregado
-e repassado para o interpretador através da biblioteca pyswip, o que processa o arquivo
+e repassado para o interpretador através da biblioteca pyswip, a qual processa o arquivo
 e nos fornce interfaces adicionais para executar consultas bem como inserir mais fatos
 na base de conhecimento.
 
@@ -22,4 +22,7 @@ Como executar o projeto:
 Instalar python 3.10 ou superior
 $ pip install poetry
 $ poetry install
-$ poetry run python -m app <arquivo entrada> <formato excel, csv> [--sheet <sheet excel>]
+$ poetry run python -m app <arquivo entrada> <formato excel, csv> [--sheet <sheet excel>] 
+
+
+

@@ -94,9 +94,16 @@ def op_compras_na_loja() -> None:
     pass
 
 def op_item_mais_comprado() -> None:
-    query = prolog.query("mais_comprado(Item)")
-    for i in query:
-        print("Item mais comprado = ", i["Item"])
+    query = list(prolog.query("mais_comprado(Item)"))
+    maisComprados=query[0]['Item']
+    if len(maisComprados)==1:
+        print("Item mais comprado foi =",maisComprados[0].value)
+    elif len(maisComprados)>1:
+        print("Os itens mais comprados foram: ")
+        for j in maisComprados:
+            print(j.value)
+    else:
+        print("Ainda nao foi comprado nenhum item")
 
 
 def main(args):
